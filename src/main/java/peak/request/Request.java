@@ -3,6 +3,7 @@ package peak.request;
 import fj.Func;
 import fj.Ord;
 import fj.data.*;
+import peak.HandlerContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -20,9 +21,10 @@ public class Request {
 
 	private static final int DEFAULT_BUFFER_SIZE = 10240;
 	public final HttpServletRequest underlying;
-
-	public Request(HttpServletRequest underlying) {
+    public final HandlerContext handlerContext;
+	public Request(HttpServletRequest underlying, HandlerContext context) {
 		this.underlying = underlying;
+        this.handlerContext = context;
 	}
 
 	public TreeMap<String, List<String>> getParameters() {

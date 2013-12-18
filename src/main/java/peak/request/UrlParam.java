@@ -1,7 +1,6 @@
 package peak.request;
 
 import fj.data.Option;
-import peak.HandlerContext;
 
 /**
  * Part of the DSL for extracting named parameters from an url.
@@ -14,8 +13,8 @@ public class UrlParam {
 	
 	public UrlParam(final String name) {this.name = name;}
 	
-	public Option<String> get(HandlerContext context){
-		return context.getRequest().getAttributeAsString(name);
+	public Option<String> get(Request req){
+		return req.getAttributeAsString(name);
 	}
 	
 }

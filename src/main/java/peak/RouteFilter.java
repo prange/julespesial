@@ -8,6 +8,7 @@ import fj.data.List;
 import fj.data.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import peak.request.Request;
 import peak.request.RequestMatcher;
 import peak.request.UrlParam;
 
@@ -125,7 +126,7 @@ public abstract class RouteFilter implements Filter {
                             response.setCharacterEncoding( "UTF-8" );
                             response.setContentType( "application/json" );//Default encoding
                             logger.debug( "Invoking application " + responder.getClass().getName() );
-                            responder.run( new HandlerContext( request ) ).handle( request, response );
+                            responder.run( new Request( request, new HandlerContext( request.getServletContext() ) ) ).handle( request, response );
 
                         } catch (UnsupportedEncodingException e) {
                             logger.error( "Unsupported encoding", e );

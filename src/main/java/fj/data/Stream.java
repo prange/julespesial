@@ -1,21 +1,18 @@
 package fj.data;
 
 import fj.*;
-import fj.Func;
 import fj.control.parallel.Promise;
 import fj.control.parallel.Strategy;
 
+import java.lang.Class;
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static fj.Bottom.error;
-import static fj.Function.compose;
-import static fj.Function.constant;
-import static fj.Function.curry;
-import static fj.Function.flip;
-import static fj.Function.identity;
+import static fj.Function.*;
+import static fj.Ordering.*;
 import static fj.P.p;
 import static fj.P.p2;
 import static fj.Unit.unit;
@@ -24,9 +21,6 @@ import static fj.data.Array.mkArray;
 import static fj.data.Option.none;
 import static fj.data.Option.some;
 import static fj.function.Booleans.not;
-import static fj.Ordering.EQ;
-import static fj.Ordering.GT;
-import static fj.Ordering.LT;
 
 /**
  * A lazy (not yet evaluated), immutable, singly linked list.

@@ -1,6 +1,7 @@
 package peak;
 
 
+import peak.request.Request;
 import peak.response.ResponseBuilder;
 
 
@@ -19,7 +20,7 @@ public interface Responder
      *         servletcontext.
      * @return a ResponseBuilder that mutates the HttpServletResponse
      */
-    public abstract ResponseBuilder run(final HandlerContext context);
+    public abstract ResponseBuilder run(final Request context);
 
     /**
      * A simple responder wrapping a responsehandler. Does not use any information in the context.
@@ -36,7 +37,7 @@ public interface Responder
         }
 
         @Override
-        public ResponseBuilder run(HandlerContext context) {
+        public ResponseBuilder run(Request context) {
             return handler;
         }
 

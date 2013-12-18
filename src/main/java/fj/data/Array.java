@@ -100,7 +100,7 @@ public final class Array<A> implements Iterable<A> {
    * @param c A class for the returned array.
    * @return A copy of the underlying primitive array.
    */
-  public A[] array(final Class<A[]> c) {
+  public A[] array(final java.lang.Class<A[]> c) {
     return copyOf(a, a.length, c);
   }
 
@@ -900,7 +900,7 @@ public final class Array<A> implements Iterable<A> {
   }
 
   @SuppressWarnings({"SuspiciousSystemArraycopy", "unchecked", "ObjectEquality", "RedundantCast"})
-  public static <T, U> T[] copyOf(final U[] a, final int len, final Class<? extends T[]> newType) {
+  public static <T, U> T[] copyOf(final U[] a, final int len, final java.lang.Class<? extends T[]> newType) {
     final T[] copy = (Object)newType == Object[].class
         ? (T[]) new Object[len]
         : (T[]) java.lang.reflect.Array.newInstance(newType.getComponentType(), len);

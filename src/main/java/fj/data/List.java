@@ -1,31 +1,27 @@
 package fj.data;
 
-import static fj.Bottom.error;
-
 import fj.*;
-import fj.Func;
-
-import static fj.Function.curry;
-import static fj.Function.constant;
-import static fj.Function.identity;
-import static fj.Function.compose;
-import static fj.P.p;
-import static fj.P.p2;
-import static fj.Unit.unit;
-import static fj.data.Array.mkArray;
-import static fj.data.List.Buffer.*;
-import static fj.data.Option.none;
-import static fj.data.Option.some;
-import static fj.function.Booleans.not;
-import static fj.Ordering.GT;
-import static fj.Ord.intOrd;
-
 import fj.control.Trampoline;
 
+import java.lang.Class;
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import static fj.Bottom.error;
+import static fj.Function.*;
+import static fj.Ord.intOrd;
+import static fj.Ordering.GT;
+import static fj.P.p;
+import static fj.P.p2;
+import static fj.Unit.unit;
+import static fj.data.Array.mkArray;
+import static fj.data.List.Buffer.empty;
+import static fj.data.List.Buffer.fromList;
+import static fj.data.Option.none;
+import static fj.data.Option.some;
+import static fj.function.Booleans.not;
 
 /**
  * Provides an in-memory, immutable, singly linked list.

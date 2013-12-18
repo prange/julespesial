@@ -2,6 +2,7 @@ package fj.data;
 
 import fj.*;
 
+import java.lang.Class;
 import java.util.Collection;
 import java.util.Iterator;
 
