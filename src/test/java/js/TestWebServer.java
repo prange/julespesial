@@ -1,14 +1,13 @@
 package js;
 
 import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.ListenableFuture;
 import com.ning.http.client.Response;
 import fj.Show;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.junit.Test;
-
-import java.util.concurrent.Future;
 
 public class TestWebServer {
 
@@ -30,7 +29,7 @@ public class TestWebServer {
     @Test
     public void testApi() throws Exception {
         Server server = start( 8080 );
-        Future<Response> call = client.prepareGet( "http://localhost:8080/hello" )
+        ListenableFuture<Response> call = client.prepareGet( "http://localhost:8080/hello" )
                 .addQueryParameter( "name", "jalla" ).execute();
 
 
