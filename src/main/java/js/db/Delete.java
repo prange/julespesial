@@ -9,7 +9,7 @@ import java.util.Map;
  *
  * @param <T>
  */
-public class Delete<T> implements DbOp<Id<T>> {
+public class Delete<T> extends DbOp<Id<T>> {
 
 	public final Id<T> value;
 
