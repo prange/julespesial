@@ -934,10 +934,10 @@ public abstract class Stream<A> implements Iterable<A> {
   }
 
   /**
-   * Returns an option projection of this stream; <code>None</code> if empty, or the first element
+   * Returns an fold projection of this stream; <code>None</code> if empty, or the first element
    * in <code>Some</code>.
    *
-   * @return An option projection of this stream.
+   * @return An fold projection of this stream.
    */
   public final Option<A> toOption() {
     return isEmpty() ? Option.<A>none() : some(head());

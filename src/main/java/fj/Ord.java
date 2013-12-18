@@ -44,7 +44,7 @@ public final class Ord<A> {
    * @return An ordering for the given arguments.
    */
   public Ordering compare(final A a1, final A a2) {
-    return f.f(a1).f(a2);
+    return f.f( a1 ).f( a2 );
   }
 
   /**
@@ -399,7 +399,7 @@ public final class Ord<A> {
   /**
    * An order instance for the {@link Option} type.
    *
-   * @param oa Order across the element of the option.
+   * @param oa Order across the element of the fold.
    * @return An order instance for the {@link Option} type.
    */
   public static <A> Ord<Option<A>> optionOrd(final Ord<A> oa) {
@@ -413,7 +413,7 @@ public final class Ord<A> {
                    Ordering.LT :
                    o2.isNone() ?
                    Ordering.GT :
-                   oa.f.f(o1.some()).f(o2.some());
+                   oa.f.f( o1.some() ).f( o2.some() );
           }
         };
       }
@@ -434,11 +434,11 @@ public final class Ord<A> {
           public Ordering f(final Either<A, B> e2) {
             return e1.isLeft() ?
                    e2.isLeft() ?
-                   oa.f.f(e1.left().value()).f(e2.left().value()) :
+                   oa.f.f( e1.left().value() ).f( e2.left().value() ) :
                    Ordering.LT :
                    e2.isLeft() ?
                    Ordering.GT :
-                   ob.f.f(e1.right().value()).f(e2.right().value());
+                   ob.f.f( e1.right().value() ).f( e2.right().value() );
           }
         };
       }
@@ -473,7 +473,7 @@ public final class Ord<A> {
               return l1.isEmpty() ? Ordering.EQ : Ordering.GT;
             else {
               final Ordering c = oa.compare(l1.head(), l2.head());
-              return c == Ordering.EQ ? listOrd(oa).f.f(l1.tail()).f(l2.tail()) : c;
+              return c == Ordering.EQ ? listOrd(oa).f.f( l1.tail() ).f( l2.tail() ) : c;
             }
           }
         };
@@ -508,7 +508,7 @@ public final class Ord<A> {
               return s1.isEmpty() ? Ordering.EQ : Ordering.GT;
             else {
               final Ordering c = oa.compare(s1.head(), s2.head());
-              return c == Ordering.EQ ? streamOrd(oa).f.f(s1.tail()._1()).f(s2.tail()._1()) : c;
+              return c == Ordering.EQ ? streamOrd(oa).f.f( s1.tail()._1() ).f( s2.tail()._1() ) : c;
             }
           }
         };

@@ -60,7 +60,7 @@ public final class Show<A> {
    * @return The display rendering of the given argument.
    */
   public Stream<Character> show(final A a) {
-    return f.f(a);
+    return f.f( a );
   }
 
   /**
@@ -166,7 +166,7 @@ public final class Show<A> {
   public static <A> Show<A> showS(final Func<A, String> f) {
     return new Show<A>(new Func<A, Stream<Character>>() {
       public Stream<Character> f(final A a) {
-        return fromString(f.f(a));
+        return fromString(f.f( a ));
       }
     });
   }
@@ -252,7 +252,7 @@ public final class Show<A> {
   /**
    * A show instance for the {@link Option} type.
    *
-   * @param sa Show for the element of the option.
+   * @param sa Show for the element of the fold.
    * @return A show instance for the {@link Option} type.
    */
   public static <A> Show<Option<A>> optionShow(final Show<A> sa) {
@@ -260,7 +260,7 @@ public final class Show<A> {
       public Stream<Character> f(final Option<A> o) {
         return o.isNone() ?
                fromString("None") :
-               fromString("Some(").append(sa.f.f(o.some())).append(single(')'));
+               fromString("Some(").append(sa.f.f( o.some() )).append(single(')'));
       }
     });
   }
@@ -276,8 +276,8 @@ public final class Show<A> {
     return new Show<Either<A, B>>(new Func<Either<A, B>, Stream<Character>>() {
       public Stream<Character> f(final Either<A, B> e) {
         return e.isLeft() ?
-               fromString("Left(").append(sa.f.f(e.left().value())).append(single(')')) :
-               fromString("Right(").append(sb.f.f(e.right().value())).append(single(')'));
+               fromString("Left(").append(sa.f.f( e.left().value() )).append(single(')')) :
+               fromString("Right(").append(sb.f.f( e.right().value() )).append(single(')'));
       }
     });
   }
@@ -293,8 +293,8 @@ public final class Show<A> {
     return new Show<Validation<A, B>>(new Func<Validation<A, B>, Stream<Character>>() {
       public Stream<Character> f(final Validation<A, B> v) {
         return v.isFail() ?
-               fromString("Fail(").append(sa.f.f(v.fail())).append(single(')')) :
-               fromString("Success(").append(sb.f.f(v.success())).append(single(')'));
+               fromString("Fail(").append(sa.f.f( v.fail() )).append(single(')')) :
+               fromString("Success(").append(sb.f.f( v.success() )).append(single(')'));
       }
     });
   }
@@ -332,8 +332,8 @@ public final class Show<A> {
   public static <A> Show<Tree<A>> treeShow(final Show<A> sa) {
     return new Show<Tree<A>>(new Func<Tree<A>, Stream<Character>>() {
       public Stream<Character> f(final Tree<A> a) {
-        final Stream<Character> b = sa.f.f(a.root())
-            .append(p1Show(streamShow(treeShow(sa))).f.f(a.subForest()))
+        final Stream<Character> b = sa.f.f( a.root() )
+            .append(p1Show(streamShow(treeShow(sa))).f.f( a.subForest() ))
             .snoc(')');
         return cons('(', p(b));
       }
@@ -366,7 +366,7 @@ public final class Show<A> {
         Stream<Character> b = nil();
 
         for (int i = 0; i < as.length(); i++) {
-          b = b.append(sa.f.f(as.get(i)));
+          b = b.append(sa.f.f( as.get( i ) ));
 
           if (i != as.length() - 1)
             b = b.snoc(',');

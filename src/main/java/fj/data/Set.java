@@ -423,7 +423,7 @@ public abstract class Set<A> implements Iterable<A> {
    * Splits this set at the given element. Returns a product-3 of:
    * <ul>
    * <li>A set containing all the elements of this set which are less than the given value.</li>
-   * <li>An option of a value equal to the given value, if one was found in this set, otherwise None.
+   * <li>An fold of a value equal to the given value, if one was found in this set, otherwise None.
    * <li>A set containing all the elements of this set which are greater than the given value.</li>
    * </ul>
    *

@@ -123,10 +123,10 @@ public abstract class List<A> implements Iterable<A> {
   }
 
   /**
-   * Returns an option projection of this list; <code>None</code> if empty, or the first element in
+   * Returns an fold projection of this list; <code>None</code> if empty, or the first element in
    * <code>Some</code>.
    *
-   * @return An option projection of this list.
+   * @return An fold projection of this list.
    */
   public final Option<A> toOption() {
     return isEmpty() ? Option.<A>none() : some(head());

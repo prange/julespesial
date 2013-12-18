@@ -29,11 +29,13 @@ public class TestWebServer {
     @Test
     public void testApi() throws Exception {
         Server server = start( 8080 );
-        ListenableFuture<Response> call = client.prepareGet( "http://localhost:8080/hello" )
+
+        ListenableFuture<Response> call =
+                client.prepareGet( "http://localhost:8080/hello" )
                 .addQueryParameter( "name", "jalla" ).execute();
-
-
         Show.stringShow.println( call.get().getResponseBody());
+
+
         //Kan future klassen forbedres?
         server.stop();
     }

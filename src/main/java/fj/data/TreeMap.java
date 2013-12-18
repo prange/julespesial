@@ -201,7 +201,7 @@ public final class TreeMap<K, V> implements Iterable<P2<K, V>> {
    * Splits this TreeMap at the given key. Returns a triple of:
    * <ul>
    * <li>A set containing all the values of this map associated with keys less than the given key.</li>
-   * <li>An option of a value mapped to the given key, if it exists in this map, otherwise None.
+   * <li>An fold of a value mapped to the given key, if it exists in this map, otherwise None.
    * <li>A set containing all the values of this map associated with keys greater than the given key.</li>
    * </ul>
    *

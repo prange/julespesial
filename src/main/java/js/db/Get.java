@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @param <T>
  */
-public class Get<T> extends DbOp<Option<Id<T>>> {
+public class Get<T> extends DbOp<Option<T>> {
 
 	public final Class<T> type;
 	public final String key;
@@ -20,10 +20,10 @@ public class Get<T> extends DbOp<Option<Id<T>>> {
 		this.type = type;
 	}
 
-    @Override public Option<Id<T>> run(Map<String, Object> stor) {
+    @Override public Option<T> run(Map<String, Object> stor) {
         Object value = stor.get(key);
         if(type.isInstance( value ))
-            return Option.some(new Id<>(key,type.cast( value )));
+            return Option.some(type.cast( value ));
         return Option.none();
     }
 }

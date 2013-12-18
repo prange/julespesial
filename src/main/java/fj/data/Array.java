@@ -114,10 +114,10 @@ public final class Array<A> implements Iterable<A> {
   }
 
   /**
-   * Returns an option projection of this array; <code>None</code> if empty, or the first element in
+   * Returns an fold projection of this array; <code>None</code> if empty, or the first element in
    * <code>Some</code>.
    *
-   * @return An option projection of this array.
+   * @return An fold projection of this array.
    */
   @SuppressWarnings("unchecked")
   public Option<A> toOption() {
@@ -749,10 +749,10 @@ public final class Array<A> implements Iterable<A> {
     }
 
     /**
-     * Returns an option projection of this array; <code>None</code> if empty, or the first element
+     * Returns an fold projection of this array; <code>None</code> if empty, or the first element
      * in <code>Some</code>.
      *
-     * @return An option projection of this array.
+     * @return An fold projection of this array.
      */
     public Option<A> toOption() {
       return a.toOption();

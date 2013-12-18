@@ -43,7 +43,7 @@ public final class Equal<A> {
    * @return <code>true</code> if the two given arguments are equal, <code>false</code> otherwise.
    */
   public boolean eq(final A a1, final A a2) {
-    return f.f(a1).f(a2);
+    return f.f( a1 ).f( a2 );
   }
 
   /**
@@ -219,8 +219,8 @@ public final class Equal<A> {
       public Func<Either<A, B>, Boolean> f(final Either<A, B> e1) {
         return new Func<Either<A, B>, Boolean>() {
           public Boolean f(final Either<A, B> e2) {
-            return e1.isLeft() && e2.isLeft() && ea.f.f(e1.left().value()).f(e2.left().value()) ||
-                   e1.isRight() && e2.isRight() && eb.f.f(e1.right().value()).f(e2.right().value());
+            return e1.isLeft() && e2.isLeft() && ea.f.f( e1.left().value() ).f( e2.left().value() ) ||
+                   e1.isRight() && e2.isRight() && eb.f.f( e1.right().value() ).f( e2.right().value() );
           }
         };
       }
@@ -280,7 +280,7 @@ public final class Equal<A> {
   /**
    * An equal instance for the {@link Option} type.
    *
-   * @param ea Equality across the element of the option.
+   * @param ea Equality across the element of the fold.
    * @return An equal instance for the {@link Option} type.
    */
   public static <A> Equal<Option<A>> optionEqual(final Equal<A> ea) {
@@ -289,7 +289,7 @@ public final class Equal<A> {
         return new Func<Option<A>, Boolean>() {
           public Boolean f(final Option<A> o2) {
             return o1.isNone() && o2.isNone() ||
-                   o1.isSome() && o2.isSome() && ea.f.f(o1.some()).f(o2.some());
+                   o1.isSome() && o2.isSome() && ea.f.f( o1.some() ).f( o2.some() );
           }
         };
       }

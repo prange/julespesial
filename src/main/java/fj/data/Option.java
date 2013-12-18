@@ -110,7 +110,7 @@ public abstract class Option<A> implements Iterable<A> {
    * @param f The function to apply to the value of this optional value.
    * @return A reduction on this optional value.
    */
-  public final <B> B option(final P1<B> b, final Func<A, B> f) {
+  public final <B> B fold(final P1<B> b, final Func<A, B> f) {
     return isSome() ? f.f(some()) : b._1();
   }
 
@@ -696,10 +696,10 @@ public abstract class Option<A> implements Iterable<A> {
   }
 
   /**
-   * Sequence through the option monad.
+   * Sequence through the fold monad.
    *
-   * @param a The list of option to sequence.
-   * @return The option of list after sequencing.
+   * @param a The list of fold to sequence.
+   * @return The fold of list after sequencing.
    */
   public static <A> Option<List<A>> sequence(final List<Option<A>> a) {
     return a.isEmpty() ?
@@ -854,7 +854,7 @@ public abstract class Option<A> implements Iterable<A> {
   /**
    * First-class bind function.
    *
-   * @return A function that binds a given function across an option with a final join.
+   * @return A function that binds a given function across an fold with a final join.
    */
   public static <A, B> Func<Func<A, Option<B>>, Func<Option<A>, Option<B>>> bind() {
     return curry(new Func2<Func<A, Option<B>>, Option<A>, Option<B>>() {

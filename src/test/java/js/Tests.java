@@ -13,13 +13,13 @@ public class Tests {
     public final Stream<Integer> ints =
             Stream.range( 1, 100 );
 
-    public final Arbitrary<Weight> arbWeight =
-            Arbitrary.arbitrary( Arbitrary.arbDouble.gen.map( Weight::new ) ); //Constructor reference
+    public final Arbitrary<Weight2> arbWeight =
+            Arbitrary.arbitrary( Arbitrary.arbDouble.gen.map( Weight2::new ) ); //Constructor reference
 
     @Name("En gave skal kunne ha en tilfeldig string som navn")
     Property p1 = Property.property( Arbitrary.arbAlphaNumString, arbWeight, (str) -> (weight) -> { //Curried function
-        Gave gave = new Gave( str, weight );
-        return Property.prop( Equal.stringEqual.eq(gave.betegnelse,str ));
+        Gave2 gave2 = new Gave2( str, weight );
+        return Property.prop( Equal.stringEqual.eq( gave2.betegnelse,str ));
     } );
 
     @Test

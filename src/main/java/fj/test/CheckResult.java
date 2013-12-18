@@ -247,7 +247,7 @@ public final class CheckResult {
         else if (r.isFalsified())
           return "Falsified after " + r.succeeded() + " passed " + test(r) + " with " + arguments(r);
         else if (r.isExhausted())
-          return "Gave up after " + r.succeeded() + " passed " + test(r) + " and " + r.discarded() +
+          return "Gave2 up after " + r.succeeded() + " passed " + test(r) + " and " + r.discarded() +
               " discarded tests.";
         else if (r.isPropException()) {
           final StringWriter sw = new StringWriter();
